@@ -15,6 +15,22 @@ function Boss(){
         setFilterProducts(response.data)
     }
 
+    const deleteProduct = (id) => {
+        // alert("delete ", id)
+        console.log(id)
+    }
+    const callModal = () => {
+        return (
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+            </button> 
+        )
+    }
+ 
+
+
+
+
     const columns = [
         {
           name: "Product Name",
@@ -33,12 +49,19 @@ function Boss(){
         },
         {
           name: "Photos",
-          selector: (row) => <img width={80} height={80} src={row.images[0]} />,
+          selector: (row) => <div className="p-2">
+            <img width={80} height={80} src={row.images[0]} />
+          </div>,
           sortable: true
         },
         {
           name: "Action",
-          selector: row => <button className='btn btn-primary' onClick={() => alert(row.title)}>Edit</button>
+          selector: row => (
+            <>
+                <button className='btn btn-primary' onClick={() => callModal()}>Edit</button>
+                <button className='btn btn-danger m-2' onClick={() => deleteProduct(row.id)}>Delete</button>
+            </>
+          )
         }
       ]
 
@@ -64,19 +87,50 @@ function Boss(){
             <div className="container">
                 <h1>Product Collection - Table</h1>
                 <DataTable 
+                    title="All products listing"
                     columns={columns} 
                     data={filterProducts}
                     pagination
                     subHeader
                     subHeaderComponent={
-                        <input type="text" 
-                        placeholder='search here' 
-                        className='form-control'
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        />
+                        <div className="container mt-3">
+                            <div className="row">
+                                <div className="col-7">
+
+                                </div>
+                                <div className="col-5">
+                                    <input type="search" 
+                                        placeholder='find products here' 
+                                        className='form-control'
+                                        value={search}
+                                        onChange={(e) => setSearch(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    
                     }
                 />
+            </div>
+
+            {/* modal */}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
             </div>
         </Layout>
     )
