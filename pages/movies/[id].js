@@ -44,19 +44,16 @@ function MovieDetail({trailer}) {
               </button>
             </section>
 
-
-          
-
-            
-
-            <div class="modal fade" id="playTrialer" tabindex="-1" aria-labelledby="playTrialer" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    
-                    <iframe height="687" src={YT+key} title="Marvel Studios Ant-Man and The Wasp: Quantumania | Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-                </div>
+          <div class="modal fade" id="playTrialer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+              <div class="modal-content">
+                
+              <iframe height="573" src={YT + key} title="Chan Samai  មិនស្រលាញ់អូនមិនបាន   Lyric and Chords" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        
+              </div>
             </div>
-            </div>
+          </div>
+
      </div>
     </Layout>
   );

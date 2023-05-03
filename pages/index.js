@@ -22,7 +22,6 @@ function Home({movies}) {
             <div className="row g-3">
                 {
                   movies.results.map(movie => (
-                    
                       <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
                         <Link href={{
                           pathname: `/movies/${movie.id}`,
@@ -44,14 +43,14 @@ function Home({movies}) {
                   ))
                 }
             </div>
-        </div>
+      </div>
   
     </Layout>
   )
 }
 
 export async function getServerSideProps() {
-  console.log(`${BASE_URL}movie/popular?api_key=${API_KEY}&page=1`)
+  console.log(`${BASE_URL}/movie/popular?api_key=${API_KEY}&page=1`)
   const res = await fetch(`${BASE_URL}movie/popular?api_key=${API_KEY}&page=1`)
   const resp = await res.json()
   console.log(resp)
